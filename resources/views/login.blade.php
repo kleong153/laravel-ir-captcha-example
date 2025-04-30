@@ -11,7 +11,7 @@
 </head>
 
 <body onload="initPage();">
-    <div class="mx-auto mt-4 w-25">
+    <div class="mx-auto mt-4 w-100 px-1" style="max-width: 340px;">
         <div class="d-flex justify-content-center mb-2">
             <h5>Demo Login With IR Captcha</h5>
         </div>
