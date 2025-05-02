@@ -10,10 +10,12 @@ Make sure the following PHP extensions are installed:
 
 ## Setup Instructions
 1. Clone this repository.
-2. Run ```composer install``` command to install dependencies.
+2. Copy .env.example file, paste and rename as .env file.
 3. Edit ```APP_URL``` in ```.env``` file according to your local virtual host configuration.
-3. Run ```php artisan migrate``` command for database migrations.
-4. Run ```php artisan storage:link``` command to create symbolic link for storage.
+4. Run ```composer install``` command to install dependencies.
+5. Run ```php artisan key:generate``` command for generate project key.
+6. Run ```php artisan migrate``` command for database migrations.
+7. Run ```php artisan storage:link``` command to create symbolic link for storage.
 
 ## Usage
 Refer to ```resources/views/login.blade.php``` for example of how to integrate IR Captcha with your UI framework (Bootstrap 5 is used in this project).
