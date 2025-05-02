@@ -21,3 +21,7 @@ yarn-error.log
 /packages
 /*.bak
 composer.lock
+
+.env
+.env.backup
+.env.production
