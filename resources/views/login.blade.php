@@ -92,12 +92,12 @@
                 const theme = document.documentElement.getAttribute("data-bs-theme");
                 const modelContent = document.querySelector("#ir_captcha_modal .modal-content");
 
-                let captchaUrl = "{{ ir_captcha()->iframeUrl(false) }}";
+                let captchaUrl = `{{ ir_captcha()->iframeUrl() }}?parent_origin=${window.location.origin}`;
 
                 if (theme === "dark") {
                     // Set modal's background color to match with captcha's background color.
                     modelContent.style.backgroundColor = "#1b1b1b";
-                    captchaUrl += "?theme=dark";
+                    captchaUrl += "&theme=dark";
                 } else {
                     modelContent.style.backgroundColor = "";
                 }
