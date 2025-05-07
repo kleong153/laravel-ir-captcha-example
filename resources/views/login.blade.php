@@ -18,10 +18,18 @@
 
         <div class="card">
             <div class="card-body">
-                <div class="d-flex flex-row justify-content-center mb-3">
+                <div class="d-flex flex-row justify-content-center mb-2">
                     <a href="javascript:void(0);" onclick="setTheme('light');">Light Theme</a>
                     &nbsp;|&nbsp;
                     <a href="javascript:void(0);" onclick="setTheme('dark');">Dark Theme</a>
+                </div>
+
+                <div class="d-flex flex-row justify-content-center mb-3">
+                    Captcha Language:&nbsp;
+                    <select id="captcha_lang_select">
+                        <option value="en" selected>English</option>
+                        <option value="cn">简中</option>
+                    </select>
                 </div>
 
                 <form id="login_form" action="{{ url('/do-login') }}" method="POST" onsubmit="return onSubmit(event);">
@@ -51,14 +59,14 @@
     </div>
 
     <div id="ir_captcha_modal" class="modal" tabindex="-1">
-        <div class="modal-dialog" style="width: 314px;">
+        <div class="modal-dialog" style="width: 335px;">
             <div class="modal-content">
                 <div class="modal-body align-middle">
                     <div class="d-flex flex-row-reverse mb-1">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <iframe id="ir_captcha_iframe" src="" title="IR Captcha Verification" height="276" width="280"></iframe>
+                    <iframe id="ir_captcha_iframe" src="" title="IR Captcha Verification" height="290" width="300"></iframe>
                 </div>
             </div>
         </div>
@@ -69,6 +77,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.min.js" integrity="sha384-VQqxDN0EQCkWoxt/0vsQvZswzTHUVOImccYmSyhJTp7kGtPed0Qcx8rK9h9YEgx+" crossorigin="anonymous"></script>
 
     <script>
+        const captchaLangSelect = document.getElementById("captcha_lang_select");
         const loginForm = document.getElementById("login_form");
         const captchaTokenInput = document.querySelector("input[name='captcha_token']");
         const model = document.getElementById("ir_captcha_modal");
@@ -92,7 +101,7 @@
                 const theme = document.documentElement.getAttribute("data-bs-theme");
                 const modelContent = document.querySelector("#ir_captcha_modal .modal-content");
 
-                let captchaUrl = `{{ ir_captcha()->iframeUrl() }}?parent_origin=${window.location.origin}`;
+                let captchaUrl = `{{ ir_captcha()->iframeUrl() }}?parent_origin=${window.location.origin}&_lang=${captchaLangSelect.value}`;
 
                 if (theme === "dark") {
                     // Set modal's background color to match with captcha's background color.

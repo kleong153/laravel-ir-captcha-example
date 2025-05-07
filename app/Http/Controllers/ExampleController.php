@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Klangch\LaravelIRCaptcha\Rules\IRCaptcha;
 
-class TestController extends Controller
+class ExampleController extends Controller
 {
     public function index()
     {
