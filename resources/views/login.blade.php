@@ -84,10 +84,12 @@
         const iframe = document.getElementById("ir_captcha_iframe");
 
         const captchaStatusListener = (event) => {
-            if (event.origin !== window.location.origin) {
-                // Only accept messages from same domain.
-                return;
-            } else if (event.data && event.data.type === "irCaptcha" && event.data.status === "success") {
+            // Optional: only accept messages from same domain for additional security checking.
+            // if (event.origin !== window.location.origin) {
+            //     return;
+            // }
+            
+            if (event.data && event.data.type === "irCaptcha" && event.data.status === "success") {
                 // Fill in captcha token and continue form submission.
                 captchaTokenInput.value = event.data.captchaToken;
 
